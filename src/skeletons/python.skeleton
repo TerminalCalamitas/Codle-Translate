@@ -1,0 +1,3 @@
+variable: "%var_name% = %var_value%"
+if: "if %condition%:\n      %code%"
+for: "for %var_name% in range(%start%, %end%):\n    %code%"
