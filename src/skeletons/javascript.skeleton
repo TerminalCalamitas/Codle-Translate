@@ -2,5 +2,5 @@ variable: "let %var_name% = %var_value%;"
 if: "if (%condition%) {\n\t%code%\n}"
 if: "if (%condition%) {\n  %code%\n}"
 for: "for (let %var_name% = %start%; %var_name% < %end%; %var_name%++) {\n  %code%\n}"
-
-
+output: "console.log(%string%);"
+comment: "// %string%"
