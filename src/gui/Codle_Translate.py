@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'Codle Translate.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.17
+## Created by: Qt User Interface Compiler version 5.15.18
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.OutputBox, 1, 2, 3, 1)
 
-        self.Belowbuttonspacing = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.Belowbuttonspacing = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.Belowbuttonspacing, 3, 1, 1, 1)
 
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.OutputLanguage, 0, 2, 1, 1)
 
-        self.AboveButtonSpacing = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.AboveButtonSpacing = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.AboveButtonSpacing, 1, 1, 1, 1)
 
@@ -92,6 +92,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.RunTranslation, self.OutputBox)
 
         self.retranslateUi(MainWindow)
+        self.InputLanguage.currentTextChanged.connect(self.InputBox.setPlainText)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
