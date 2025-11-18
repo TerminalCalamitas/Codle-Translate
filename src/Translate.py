@@ -58,14 +58,14 @@ def generate_code(output_language_skeleton: dict, program_ast):
 
         # If it's a code segment then recall on the value
         if isinstance(value, dict) and "element" in value:
-            sub_code = generate_code(skeletons, value)
+            sub_code = generate_code(output_language_skeleton, value)
             code = code.replace(f"%{key}%", sub_code)
 
         elif isinstance(value, list):
             sub_parts = []
             for item in value:
                 if isinstance(item, dict) and "element" in item:
-                    sub_parts.append(generate_code(skeletons, item))
+                    sub_parts.append(generate_code(output_language_skeleton, item))
                 else:
                     sub_parts.append(str(item))
             code = code.replace(f"%{key}%", "\n".join(sub_parts))
