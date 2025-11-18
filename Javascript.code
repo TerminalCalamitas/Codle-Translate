@@ -1,5 +1,5 @@
 // For loop
-for (let i = 0; index < 100; index++) {
+for (let i = 0; i < 100; i++) {
   console.log("hello");
 }
 // If statement
