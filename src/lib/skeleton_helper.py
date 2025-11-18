@@ -34,7 +34,7 @@ def skeleton_to_regex(
         "end": r"\d+",  # some number
         "var_value": r"[^;]+",  # up to the next semicolon
         "condition": r"[^)]+",  # inside parentheses
-        "code": r"[\s\S]*?",  # any text (non-greedy)
+        "code": r"[\s\S]*",  # any text (greedy)
         "string": r"[^\n]+",  # anything not a newline
     }
 
@@ -69,7 +69,7 @@ def skeleton_to_regex(
         else:
             regex_parts.append(re.escape(token))
 
-    full_pattern = r"^\s*" + "".join(regex_parts) + r"\s*$"
+    full_pattern = r"\s*" + "".join(regex_parts)
     compiled = re.compile(full_pattern, re.DOTALL)
     return compiled, dict(counts)
 
