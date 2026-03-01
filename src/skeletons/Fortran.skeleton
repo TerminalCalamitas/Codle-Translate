@@ -1,5 +1,0 @@
-variable: "%var_name% = %var_value%"
-if: "if (%condition%) then\n  %code%\nend if"
-for: "do %var_name% = %start%, %end%\n  %code%\nend do"
-output: "print*, \"%string%\""
-comment: "!%string%"

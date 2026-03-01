@@ -9,7 +9,7 @@ def load_skeleton(lang: str) -> dict:
     Load a skeleton YAML file from ./src/skeletons/{lang}.skeleton
     """
     current_dir = os.path.dirname(os.path.realpath(__file__))
-    skeletons_dir = os.path.join(current_dir, "../skeletons")
+    skeletons_dir = os.path.join(current_dir, "../src/skeletons")
     skeleton_file_path = os.path.join(skeletons_dir, f"{lang}.skeleton")
 
     with open(skeleton_file_path) as skel:

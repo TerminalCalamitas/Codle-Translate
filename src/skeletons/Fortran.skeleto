@@ -1,0 +1,6 @@
+assignment: "%name% = %value%"
+if: "if (%condition%) then\n  %body%\nend if"
+for: "do %name% = %start%, %end%\n  %body%\nend do"
+while: "do while (%condition%)\n %body%"
+output: "print*, %value%"
+comment: "! %text%"

@@ -4,6 +4,13 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 from src.Translate import translate
 
 
+def main():
+    app = QApplication(sys.argv)
+    window = TranslationUI()
+    window.show()
+    sys.exit(app.exec())
+
+
 class TranslationUI(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -49,7 +56,4 @@ class TranslationUI(QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = TranslationUI()
-    window.show()
-    sys.exit(app.exec())
+    main()

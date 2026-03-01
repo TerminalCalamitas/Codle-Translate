@@ -7,7 +7,6 @@ def parse_program(code: str, patterns: dict, placeholder_count: dict, **kwargs):
     remaining = code
 
     while remaining:
-        print(remaining)
         remaining = remaining.lstrip("\n")  # remove leading newlines only
         if not remaining.strip():
             break
@@ -15,7 +14,6 @@ def parse_program(code: str, patterns: dict, placeholder_count: dict, **kwargs):
         matched = False
 
         for element, pattern in patterns.items():
-            print(f"element: {element} pattern: {pattern}")
             m = pattern.match(remaining)
             if not m:
                 continue
@@ -35,7 +33,6 @@ def parse_program(code: str, patterns: dict, placeholder_count: dict, **kwargs):
                     parsed["code"] = nested_statements
 
             results.append(parsed)
-            print(results)
             remaining = remaining[len(snippet) :]
 
         if not matched:
