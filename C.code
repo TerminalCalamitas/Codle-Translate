@@ -1,0 +1,21 @@
+// For Loop
+for (int i = 0; i < 100; i++) {
+    printf("hello\n");
+}
+// If Statement
+if (i == 1) {
+    printf("%d\n", 1);
+}
+// While Loop
+while (i < 1) {
+    printf("%d\n", i);
+    i++;
+}
+// Integer Variable
+int integer = 1;
+// Float Variable
+float floatingpoint = 1.0;
+// String Variable
+char* string = "string";
+// Boolean Variable
+bool boolean = true;

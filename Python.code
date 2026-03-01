@@ -1,19 +1,19 @@
 # For Loop
 for i in range(0, 100):
     print("hello")
-# If statement
+# If Statement
 if i == 1:
     print(1)
-# While loop
+# While Loop
 while (i < 1):
     print(i)
-    i++
-# Integer variable
+    i+=1
+# Integer Variable
 integer = 1
-# Float variable
-flotingpoint = 1.0
-# String variable
+# Float Variable
+floatingpoint = 1.0
+# String Variable
 string = "string"
-# boolean variable
+# Boolean Variable
 boolean = True
 
