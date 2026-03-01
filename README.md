@@ -4,9 +4,14 @@ A python based code translator with a simple GUI
 
 ## Quick Start
 
-Test out the project at it's current state
+> [!IMPORTANT]
+> python 3.13.x must be installed for this to run
+
+Make sure poetry is installed on system using `pip install poetry` or `pipx install poetry` depending on your system.
 
 ```bash
-poetry install
-poetry run python ./src/gui.py
+poetry sync
+poetry run gui
 ```
+
+You area also able to run the test script with `poetry run test`
