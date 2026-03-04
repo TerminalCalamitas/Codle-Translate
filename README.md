@@ -14,4 +14,13 @@ poetry sync
 poetry run gui
 ```
 
-You area also able to run the test script with `poetry run test`
+## Testing
+
+Run all tests with verbose logging:
+`poetry run test`
+
+Run a specific class:
+`poetry run pytest tests/test.py::TestNormalize -v`
+
+Run a specific test:
+`pytest tests/test.py::TestIRParser::test_js_for_loop -vt`
