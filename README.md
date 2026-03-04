@@ -1,26 +1,91 @@
 # Codle Translate
 
-A python based code translator with a simple GUI
+A lightweight desktop app for translating code between programming languages.
 
-## Quick Start
+![Codle Translate GUI](assets/gui.png)
 
-> [!IMPORTANT]
-> python 3.13.x must be installed for this to run
+---
 
-Make sure poetry is installed on system using `pip install poetry` or `pipx install poetry` depending on your system.
+## Supported Code
+
+**Supported Languages:**
+
+- JavaScript
+- Python
+- Java
+- C
+
+**Supported constructs:**
+
+- Variable declarations (int, float, string, bool)
+- for loops (range() and C-style)
+- while loops
+- if statements
+- Output statements
+- Single-line comments
+
+---
+
+## Installation Guide
+
+> **IMPORTANT**
+> Python **3.13.x** is required for this project.
+
+Install [Poetry](https://python-poetry.org/) if not installed already:
 
 ```bash
-poetry sync
+pip install poetry
+# or
+pipx install poetry
+```
+
+Then install dependencies and launch the GUI:
+
+```bash
+poetry  install
 poetry run gui
 ```
 
+![Python to C translation](assets/Python-to-C.png)
+
 ## Testing
 
-Run all tests with verbose logging:
-`poetry run test`
+Run all tests with verbose output:
 
-Run a specific class:
-`poetry run pytest tests/test.py::TestNormalize -v`
+```bash
+poetry run test
+```
+
+Run a specific test class:
+
+```bash
+poetry run pytest tests/test.py::ClassName -v
+```
 
 Run a specific test:
-`pytest tests/test.py::TestIRParser::test_js_for_loop -vt`
+
+```bash
+pytest tests/test.py::ClassName::test_method -v
+```
+
+---
+
+## Dependencies
+
+| Package                                                                          | Purpose                     |
+| -------------------------------------------------------------------------------- | --------------------------- |
+| [PySide6](https://pypi.org/project/PySide6/)                                     | Desktop GUI framework (Qt6) |
+| [tree-sitter-language-pack](https://pypi.org/project/tree-sitter-language-pack/) | Multi-language parsing      |
+| [pytest](https://pypi.org/project/pytest/)                                       | Unit Testing                |
+
+---
+
+## Limitations
+
+The translator handles common patterns but is not a full compiler and as such complex constructs like functions, classes, imports, and multi-line expressions are not currently supported.
+
+---
+
+## License
+
+MIT
