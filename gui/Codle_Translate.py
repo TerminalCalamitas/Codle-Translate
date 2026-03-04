@@ -103,13 +103,13 @@ class Ui_MainWindow(object):
         self.OutputLanguage.setItemText(0, QCoreApplication.translate("MainWindow", u"Javascript", None))
         self.OutputLanguage.setItemText(1, QCoreApplication.translate("MainWindow", u"Python", None))
         self.OutputLanguage.setItemText(2, QCoreApplication.translate("MainWindow", u"Java", None))
-        self.OutputLanguage.setItemText(3, QCoreApplication.translate("MainWindow", u"Fortran", None))
+        self.OutputLanguage.setItemText(3, QCoreApplication.translate("MainWindow", u"C", None))
 
         self.RunTranslation.setText(QCoreApplication.translate("MainWindow", u"  Translate Input  ", None))
         self.InputLanguage.setItemText(0, QCoreApplication.translate("MainWindow", u"Javascript", None))
         self.InputLanguage.setItemText(1, QCoreApplication.translate("MainWindow", u"Python", None))
         self.InputLanguage.setItemText(2, QCoreApplication.translate("MainWindow", u"Java", None))
-        self.InputLanguage.setItemText(3, QCoreApplication.translate("MainWindow", u"Fortran", None))
+        self.InputLanguage.setItemText(3, QCoreApplication.translate("MainWindow", u"C", None))
 
         self.InputBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Code to Translate", None))
     # retranslateUi
