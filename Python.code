@@ -16,4 +16,3 @@ floatingpoint = 1.0
 string = "string"
 # Boolean Variable
 boolean = True
-
