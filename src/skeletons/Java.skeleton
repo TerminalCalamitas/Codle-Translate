@@ -1,6 +1,0 @@
-assignment: "%type% %name% = %value%;"
-if: "if (%condition%) {\n  %body%\n}"
-for: "for (let %name% = %start%; %name% < %end%; %name%++) {\n  %body%\n}"
-while: "while %condition% {\n %body%\n}"
-print: "System.out.println(%value%)"
-comment: "// %text%"

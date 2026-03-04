@@ -1,7 +1,7 @@
 from gui.Codle_Translate import Ui_MainWindow
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
-from src.Translate import translate
+from src.translator import translate
 
 
 def main():
@@ -21,9 +21,12 @@ class TranslationUI(QMainWindow):
         self.ui.RunTranslation.clicked.connect(self.translate_text)
 
         self.ui.InputLanguage.currentTextChanged.connect(self.load_language_from_file)
-        self.load_language_from_file(self.ui.InputLanguage.currentText())
 
     def load_language_from_file(self, language_name):
+        current_text = self.ui.InputBox.toPlainText()
+        current_lang = self.ui.InputLanguage.currentText()
+        if current_text != current_lang:
+            return
         filename = f"{language_name}.code"
 
         try:
@@ -41,10 +44,8 @@ class TranslationUI(QMainWindow):
         output_language = self.ui.OutputLanguage.currentText()
         code = self.ui.InputBox.toPlainText()
 
-        input_text = self.ui.InputBox.toPlainText()
-
         if input_language == output_language:
-            self.ui.OutputBox.setText(input_text)
+            self.ui.OutputBox.setText(code)
             return
 
         print("Calling translate")
