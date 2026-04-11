@@ -31,13 +31,13 @@ A lightweight desktop app for translating code between programming languages.
 > **IMPORTANT**
 > Python **3.13.x** is required for this project.
 
-Install [Poetry](https://python-poetry.org/) if not installed already:
+The project can be installed automatically from the install script (`.bat` for Windows and `.sh` for Linux) or the project can be manually installed with the following instructions.
 
-```bash
-pip install poetry
-# or
-pipx install poetry
-```
+Install [Poetry](https://python-poetry.org/) if not installed already installation instructions can be found here:
+https://python-poetry.org/docs/#installing-with-the-official-installer
+
+> **Poetry installation note:**
+> If the poetry command is not recognized, add poetry to the PATH
 
 Then install dependencies and launch the GUI:
 
