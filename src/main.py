@@ -20,13 +20,11 @@ class TranslationUI(QMainWindow):
         # Connect the button click to your function
         self.ui.RunTranslation.clicked.connect(self.translate_text)
 
-        self.ui.InputLanguage.currentTextChanged.connect(self.load_language_from_file)
+        # Load example code on button click
+        self.ui.LoadExample.clicked.connect(self.load_language_from_file)
 
-    def load_language_from_file(self, language_name):
-        current_text = self.ui.InputBox.toPlainText()
-        current_lang = self.ui.InputLanguage.currentText()
-        if current_text != current_lang:
-            return
+    def load_language_from_file(self):
+        language_name = self.ui.InputLanguage.currentText()
         filename = f"{language_name}.code"
 
         try:
