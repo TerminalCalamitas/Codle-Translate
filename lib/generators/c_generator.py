@@ -38,6 +38,7 @@ class CGenerator(BaseGenerator):
     def _var_assign(self, node: IRVarAssign, pad):
         if node.var_type == "bool":
             self._needs_bool = True
+            print(self._needs_bool)
         c_type = _C_TYPES.get(node.var_type, "int")
         val = self._de(node.value)
         # Emit augmented assignment for increment/decrement patterns (no type re-declaration)
@@ -87,17 +88,16 @@ class CGenerator(BaseGenerator):
         return f"{header}\n{body}\n{pad}}}"
 
     def _c_includes(self, body) -> str:
-        if self._needs_stdio:
-            return "#include <stdio.h>\n\n" + body
         if self._needs_bool:
             return "#define true 1 \n#define false 0\n\n" + body
+
+        if self._needs_stdio:
+            body = "#include <stdio.h>\n\n" + body
 
         return body
 
     def generate(self, nodes: List[IRNode], depth: int = 0) -> str:
         body = super().generate(nodes, depth)
-        if self._needs_stdio:
-            return "#include <stdio.h>\n\n" + body
 
         body = self._c_includes(body)
         return body
