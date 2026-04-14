@@ -378,4 +378,3 @@ def parse_to_ir(source: str, lang: str) -> List[IRNode]:
         nodes.extend(_dispatch_node(child, src_bytes, ts_lang))
 
     return nodes
-

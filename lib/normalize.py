@@ -1,21 +1,44 @@
 import re
 
 
+def _sub_ignore_strings(pattern: str, repl: str, text: str, flags: int = 0) -> str:
+    """
+    Making sure to only substitute outside of strings
+    """
+    _STRING_TOKEN = re.compile(r'"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\'')
+    result = []
+    last = 0
+
+    for match in _STRING_TOKEN.finditer(text):
+        # Figure out stuff before the string
+        gap = text[last : match.start()]
+        result.append(re.sub(pattern, repl, gap, flags=flags))
+
+        # Copy string to output
+        result.append(match.group())
+        last = match.end()
+    # Figure out text after strings
+    result.append(re.sub(pattern, repl, text[last:], flags=flags))
+    return "".join(result)
+
+
 def normalize(expr: str) -> str:
     """
     Convert supported language's expression into neutral formatting
     """
     e = expr.strip()
 
-    e = re.sub(r"===|==", "==", e)  # Fix for JavaScript since it is different
-    e = re.sub(r"!==|!=", "!=", e)
-    e = re.sub(r"\btrue\b", "True", e)
-    e = re.sub(r"\bfalse\b", "False", e)
-    e = re.sub(r"\bnull\b", "None", e)
-    e = re.sub(r"\bNULL\b", "None", e)
-    e = re.sub(r"&&", " and ", e)
-    e = re.sub(r"\|\|", " or ", e)
-    e = re.sub(r"!(?!=)", " not ", e)  # Change ! separate from != to 'not'
+    e = _sub_ignore_strings(r"!==|!=", "!=", e)
+    e = _sub_ignore_strings(
+        r"===|==", "==", e
+    )  # Fix for JavaScript since it is different
+    e = _sub_ignore_strings(r"\btrue\b", "True", e)
+    e = _sub_ignore_strings(r"\bfalse\b", "False", e)
+    e = _sub_ignore_strings(r"\bnull\b", "None", e)
+    e = _sub_ignore_strings(r"\bNULL\b", "None", e)
+    e = _sub_ignore_strings(r"&&", " and ", e)
+    e = _sub_ignore_strings(r"\|\|", " or ", e)
+    e = _sub_ignore_strings(r"!(?!=)", " not ", e)  # Change ! separate from != to 'not'
 
     return e.strip()
 
@@ -28,12 +51,12 @@ def denormalize(expr: str, lang: str) -> str:
         return expr
 
     e = expr
-    e = re.sub(r"\bTrue\b", "true", e)
-    e = re.sub(r"\bFalse\b", "false", e)
-    e = re.sub(r"\bNone\b", "NULL" if lang == "c" else "null", e)
-    e = re.sub(r"\band\b", "&&", e)
-    e = re.sub(r"\bor\b", "||", e)
-    e = re.sub(r"\bnot\s+", "!", e)
+    e = _sub_ignore_strings(r"\bTrue\b", "true", e)
+    e = _sub_ignore_strings(r"\bFalse\b", "false", e)
+    e = _sub_ignore_strings(r"\bNone\b", "NULL" if lang == "c" else "null", e)
+    e = _sub_ignore_strings(r"\band\b", "&&", e)
+    e = _sub_ignore_strings(r"\bor\b", "||", e)
+    e = _sub_ignore_strings(r"\bnot\b\s*", "!", e)
 
     return e
 

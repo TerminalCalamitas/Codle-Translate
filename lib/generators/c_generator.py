@@ -89,7 +89,7 @@ class CGenerator(BaseGenerator):
 
     def _c_includes(self, body) -> str:
         if self._needs_bool:
-            return "#define true 1 \n#define false 0\n\n" + body
+            body = "#define true 1 \n#define false 0\n\n" + body
 
         if self._needs_stdio:
             body = "#include <stdio.h>\n\n" + body
