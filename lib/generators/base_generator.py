@@ -21,21 +21,28 @@ class BaseGenerator:
 
     def _emit(self, node: IRNode, depth: int) -> str:
         pad = self.INDENT * depth
+
         if isinstance(node, IRComment):
             return self._comment(node.text, pad)
+
         if isinstance(node, IRVarAssign):
             return self._var_assign(node, pad)
+
         if isinstance(node, IRPrint):
             return self._print(node, pad)
+
         if isinstance(node, IRForRange):
             return self._for_range(node, depth, pad)
+
         if isinstance(node, IRWhileLoop):
             return self._while_loop(node, depth, pad)
+
         if isinstance(node, IRIfStatement):
             return self._if_stmt(node, depth, pad)
+
         return f"{pad}// [unhandled node: {type(node).__name__}]"
 
-    # Subclasses override these
+    # Subclasses override these should only be a problem if a language generator doesn't have all the features
     def _comment(self, text, pad):
         raise NotImplementedError
 

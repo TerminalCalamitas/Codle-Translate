@@ -26,17 +26,21 @@ class TranslationUI(QMainWindow):
     def load_language_from_file(self):
         language_name = self.ui.InputLanguage.currentText()
         filename = f"{language_name}.code"
+        print(f"Loading example {language_name} code from file")
 
         try:
-            with open(filename, "r") as f:
-                text = f.read()
+            with open(filename, "r") as code_file:
+                text = code_file.read()
             self.ui.InputBox.setPlainText(text)
         except FileNotFoundError:
             self.ui.InputBox.setPlainText(f"File not found: {filename}")
         except Exception as e:
             self.ui.InputBox.setPlainText(f"Error loading file: {e}")
 
+        print("Code has finished loading")
+
     def translate_text(self):
+        print("Calling translate")
         # Get text from input box
         input_language = self.ui.InputLanguage.currentText()
         output_language = self.ui.OutputLanguage.currentText()
@@ -46,7 +50,6 @@ class TranslationUI(QMainWindow):
             self.ui.OutputBox.setText(code)
             return
 
-        print("Calling translate")
         translated_code = translate(input_language, output_language, code)
         print("translate finished")
 

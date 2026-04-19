@@ -26,5 +26,9 @@ def translate(input_lang: str, output_lang: str, source: str) -> str:
         raise ValueError(f"Unsupported output language: {output_lang}")
 
     intermediate_rep = parse_to_ir(source, input_language)
+    print()
+    print(intermediate_rep)
+    print()
+
     generator = _GENERATORS[output_language]()
     return generator.generate(intermediate_rep)
