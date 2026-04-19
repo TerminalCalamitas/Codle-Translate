@@ -32,6 +32,7 @@ A lightweight desktop app for translating code between programming languages.
 > Python **3.13.x** is required for this project.
 
 The project can be installed automatically from the install script (`.bat` for Windows and `.sh` for Linux) or the project can be manually installed with the following instructions.
+After the project has been installed you can run the run.sh or run.bat file according to your operating system. You can also run `poetry run gui` in a command prompt for verbose output.
 
 Install [Poetry](https://python-poetry.org/) if not installed already installation instructions can be found here:
 https://python-poetry.org/docs/#installing-with-the-official-installer
