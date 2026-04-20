@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-set -euo pipefall
+set -euo pipefail
 
 echo "Beginning installation"
 
-check() { command --v "$1" &>/dev/null; }
+check() { command -v "$1" &>/dev/null; }
 die() {
   echo "[ERROR] $*" >&2
   exit 1
@@ -17,13 +17,13 @@ for version in python3 python; do
   fi
 done
 
-[-z "$PYTHON"] && die "Python is not installed or not found on PATH. Please install Python 3.13+"
+[ -z "$PYTHON" ] && die "Python is not installed or not found on PATH. Please install Python 3.13+"
 
 PY_VERSION=$("$PYTHON" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 PY_MAJOR=$(echo "$PY_VERSION" | cut -d. -f1)
-PY_MINOR=$(echo "$PY_VERSION" | cut -d.)
+PY_MINOR=$(echo "$PY_VERSION" | cut -d. -f2)
 
-if ["$PY_MAJOR" -lt 3] || { ["$PY_MAJOR" -eq 3] && ["$PY_MINOR" -lt 13]; }; then
+if [ "$PY_MAJOR" -lt 3 ] || { [ "$PY_MAJOR" -eq 3 ] && [ "$PY_MINOR" -lt 13 ]; }; then
   die "Python 3.13+ is required. Found: $PY_VERSION"
 fi
 echo "[OK] Python $PY_VERSION found."
@@ -56,7 +56,7 @@ fi
 
 echo
 
-echo "[INFO] Installing project dependancies via Poetry..."
+echo "[INFO] Installing project dependencies via Poetry..."
 poetry install
 
 echo

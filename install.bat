@@ -16,13 +16,13 @@ for /f "tokens=1,2 delims=." %%a in ("%PY_VERSION%") do (
   set PY_MINOR=%%b
 )
 
-if %PY_MAJOR% LSS 3 (
+if !PY_MAJOR! LSS 3 (
   echo [ERROR] Python 3.13+ is required. Found: %PY_VERSION%
   pause
   exit /b 1
 )
 
-if %PY_MAJOR% EQU 3 if %PY_MINOR% LSS 13 (
+if !PY_MAJOR! EQU 3 if !PY_MINOR! LSS 13 (
   echo [ERROR] Python 3.13+ is required. Found: %PY_VERSION%
   pause
   exit /b 1
@@ -31,7 +31,7 @@ if %PY_MAJOR% EQU 3 if %PY_MINOR% LSS 13 (
 echo [OK] Python %PY_VERSION% found.
 
 
-pip --version >nul 2>&1
+python -m pip --version >nul 2>&1
 if errorlevel 1 (
   echo [ERROR] pip not found. Please reinstall Python with pip included.
   pause
@@ -47,10 +47,10 @@ if errorlevel 1 (
       echo [INFO] Poetry not found. Installing Poetry...
  
     :: Try the official installer via PowerShell first
-    powershell -NoProfile -Command "(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -" >nul 2>&1
+    powershell -NoProfile -Command "(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -" >nul 2>&1
     if errorlevel 1 (
         echo [INFO] Official installer failed, falling back to pip...
-        pip install poetry
+        python -m pip install poetry
         if errorlevel 1 (
             echo [ERROR] Failed to install Poetry.
             pause
@@ -64,7 +64,7 @@ if errorlevel 1 (
     poetry --version >nul 2>&1
     if errorlevel 1 (
         echo [ERROR] Poetry installed but not found on PATH.
-        echo Try adding %%APPDATA%%\Python\Scripts to your PATH, then re-run.
+        echo You may need to add its install directory to PATH.
         pause
         exit /b 1
     )
