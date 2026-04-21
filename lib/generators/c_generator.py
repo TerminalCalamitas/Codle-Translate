@@ -108,5 +108,6 @@ class CGenerator(BaseGenerator):
     def generate(self, nodes: List[IRNode], depth: int = 0) -> str:
         body = super().generate(nodes, depth)
 
-        body = self._c_includes(body)
+        if depth == 0:
+            body = self._c_includes(body)
         return body
