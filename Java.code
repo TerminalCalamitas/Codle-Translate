@@ -18,4 +18,4 @@ float floatingpoint = 1.0;
 // String Variable
 String string = "string";
 // Boolean Variable
-boolean boolean = true;
+boolean bool = true;
