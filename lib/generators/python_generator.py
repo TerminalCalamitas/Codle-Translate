@@ -32,7 +32,7 @@ class PythonGenerator(BaseGenerator):
 
     def _for_range(self, node: IRForRange, d, pad):
         step_part = "" if node.step == "1" else f", {node.step}"
-        start_part = "" if node.start == "0" else f"{node.start}, "
+        start_part = "" if (node.start == "0" and node.step == 1) else f"{node.start}, "
         header = f"{pad}for {node.var} in range({start_part}{node.end}{step_part}):"
         body = self._body(node.body, d + 1)
 
