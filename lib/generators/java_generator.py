@@ -63,7 +63,7 @@ class JavaGenerator(BaseGenerator):
         else:
             incr = f"{var} += {step}"
 
-        header = f"{pad}for (let {var} = {start}; {var} < {end}; {incr}) {{"
+        header = f"{pad}for (int {var} = {start}; {var} < {end}; {incr}) {{"
         body = self._body(node.body, d + 1)
 
         return f"{header}\n{body}\n{pad}}}"
